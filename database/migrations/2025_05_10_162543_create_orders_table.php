@@ -1,0 +1,50 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('website_users')->onDelete('cascade');
+            $table->double('subtotal', 10, 2)->nullable();
+            $table->double('shipping', 10, 2)->nullable();
+            $table->string('coupon_code')->nullable();
+            $table->double('discount', 10, 2)->nullable();
+            $table->double('grand_total', 10, 2);
+           // User Address related columns
+           $table->string('first_name');
+           $table->string('last_name');
+           $table->string('email');
+           $table->string('mobile');
+           $table->text('address');
+           $table->string('apartment')->nullable();
+           $table->string('city');
+           $table->string('state')->nullable();
+           $table->string('zip')->nullable();
+           $table->text('notes')->nullable();
+            $table->timestamps();
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('orders');
+    }
+};
