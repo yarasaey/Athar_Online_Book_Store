@@ -5,6 +5,23 @@
         {{ session('success') }}
     </div>
 @endif
+@if(session('error'))
+    <div id="flash-error" class="alert alert-danger text-center mb-3">
+        {{ session('error') }}
+    </div>
+
+    <script>
+        setTimeout(function () {
+            const el = document.getElementById('flash-error');
+            if (el) {
+                el.style.transition = 'opacity 0.5s ease';
+                el.style.opacity = '0';
+                setTimeout(() => el.remove(), 500); // إزالة العنصر تمامًا بعد التلاشي
+            }
+        }, 3000); // 3 ثواني
+    </script>
+@endif
+
 <main>
     <div
       class="page-top d-flex justify-content-center align-items-center flex-column text-center"

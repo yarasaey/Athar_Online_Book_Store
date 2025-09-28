@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\CustomerAddress;
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
-   
     public function addToCart(Request $request)
 {
     $product = Product::findOrFail($request->product_id);

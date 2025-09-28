@@ -20,4 +20,8 @@ class Product extends Model
     {
         return $this->belongsTo(Authors::class, 'author_id');
     }
+    public function orderItems()
+{
+    return $this->hasMany(OrderItem::class);
+}
 }

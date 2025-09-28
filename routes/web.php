@@ -8,10 +8,13 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\admin\AuthorsController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\DiscountCodeController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WebsiteProductController;
+
 
 
 
@@ -24,6 +27,7 @@ use App\Http\Controllers\WebsiteProductController;
 Route::get('/', [FrontController ::class, 'index'])->name('front.home');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
+Route::post('/contact-store', [FrontController::class, 'contactStore'])->name('contact.store');
    //register login routes
 Route::middleware(['web'])->group(function () {
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
@@ -66,7 +70,7 @@ Route::get('/category/{id}/products', [ShopController::class, 'productsByCategor
 
 
 
-//middleware
+//middleware protected routes
 Route::group(['prefix'=>'admin'],function(){
     Route::group(['middleware'=>'admin.guest'],function(){
         Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
@@ -103,8 +107,21 @@ Route::post('/products', [ProductController::class, 'store'])->name('product.sto
 Route::get('products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+// //copouns Routes
 
-//Product image 
+ Route::get('/copouns', [DiscountCodeController::class, 'index'])->name('copoun.index');
+ Route::get('/copoun/create', [DiscountCodeController::class, 'create'])->name('copoun.create');
+ Route::post('/copoun/store', [DiscountCodeController::class, 'store'])->name('copoun.store');
+// Route::get('/copouns/{id}/edit', [DiscountCodeController::class, 'edit'])->name('copoun.edit');
+// Route::put('/copouns/{id}', [DiscountCodeController::class, 'update'])->name('copoun.update');
+// Route::delete('copouns/{id}', [:DiscountCodeController:class, 'destroy'])->name('copoun.delete');
+
+//order Routes
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders{id}', [OrderController::class, 'detail'])->name('orders.detail');
+Route::put('/orders/update-status',[OrderController::class,'update'])->name('orders.status');
+
+
 
 
 

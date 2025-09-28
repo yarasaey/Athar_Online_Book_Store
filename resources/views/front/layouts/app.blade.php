@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="{{ asset('front-assets/css/vendors/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('front-assets/css/vendors/owl.theme.default.min.css') }}">
   <link rel="stylesheet" href="{{ asset('front-assets/css/main.min.css') }}">
+ 
+
 </head>
 <body>
     @include('front.partials.header')

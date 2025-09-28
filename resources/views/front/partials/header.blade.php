@@ -31,12 +31,27 @@
               <img class="h-100" src="{{ asset('front-assets/images/logo34.png') }}" alt="">
             </a>
           </div>
-          <div class="nav__search w-100">
+          {{-- <div class="nav__search w-100">
             <input class="nav__search-input w-100" type="search" placeholder="أبحث هنا عن اي شئ تريده...">
             <span class="nav__search-icon">
               <i class="fa-solid fa-magnifying-glass"></i>
             </span>
-          </div>
+          </div> --}}
+          <div class="nav__search w-100">
+  <form action="{{ route('product.index') }}" method="GET" class="d-flex w-100">
+    <input 
+      class="nav__search-input w-100" 
+      type="search" 
+      name="search" 
+      placeholder="أبحث هنا عن اي شئ تريده..." 
+      value="{{ request('search') }}"
+    >
+    <button type="submit" class="nav__search-icon border-0 bg-transparent">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
+
           <ul class="nav__links gap-3 list-unstyled d-none d-lg-flex m-0">
             <!-- <li class="nav__link nav__link-user">
               <a class="d-flex align-items-center gap-2">

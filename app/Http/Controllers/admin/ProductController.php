@@ -22,6 +22,19 @@ class ProductController extends Controller
 
         return view('admin.products.list', compact('products'));
     }
+//     public function index(Request $request)
+// {
+//     $query = Product::latest('id'); // نبدأ بالـ query
+
+//    if ($request->filled('search')) {
+//     $query->where('name', 'like', '%' . $request->search . '%');
+//    }
+
+//     $products = $query->paginate(10); // نعمل paginate بعد ما نخلص الشروط
+
+//     return view('admin.products.list', compact('products'));
+// }
+
 
     public function create()
     {

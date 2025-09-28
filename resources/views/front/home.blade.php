@@ -17,10 +17,10 @@
           <img class="hero__img" src="{{ asset('front-assets/images/back3.png') }}" alt="">
         </div>
         <div class="hero__item">
-          <img class="hero__img" src="{{ asset('front-assets/images/back4.png') }}" alt="">
+          <img class="hero__img" src="{{ asset('front-assets/images/back34.png') }}" alt="">
         </div>
         <div class="hero__item">
-          <img class="hero__img" src="{{ asset('front-assets/images/back5.png') }}" alt="">
+          <img class="hero__img" src="{{ asset('front-assets/images/log.png') }}" alt="">
         </div>
       </div>
     </section>
@@ -98,6 +98,8 @@
    </div>
  </section>
 @endif
+
+
     <!-- Categories Section Start -->
     <section class="section-container mb-5">
       <div class="categories row gx-4">
@@ -110,7 +112,8 @@
           <div class="p-4 border rounded-3">
             <img class="w-100" src="{{ asset('front-assets/images/category-2.jpg') }}" alt="">
           </div>
-        </div>
+        </di
+        v>
       </div>
     </section>
     <!-- Best Sales Section Start -->
@@ -215,7 +218,7 @@
   <!-- Page Content End -->
 @endsection
 <script>
-  // تحقق من أن الرسالة موجودة في الصفحة
+
   window.onload = function() {
       var successMessage = document.getElementById('success-message');
       
@@ -233,8 +236,7 @@
           }, 3000); // الانتظار لمدة 3 ثوانٍ قبل إخفاء الرسالة
       }
   }
-</script>
-
+</script> 
 
 
 
@@ -242,6 +244,5 @@
   
 
 
-  
   
   

@@ -3,11 +3,17 @@
 @section('content')
 <main>
 
+
     <section
       class="page-top d-flex justify-content-center align-items-center flex-column text-center"
     >
       <div class="page-top__overlay"></div>
       <div class="position-relative">
+        @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         <div class="page-top__title mb-3">
           <h2>إتمام الطلب</h2>
         </div>

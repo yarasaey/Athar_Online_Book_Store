@@ -12,5 +12,12 @@ class Order extends Model
 {
     return $this->hasMany(OrderItem::class);
 }
-    
+    public function user()
+{
+    return $this->belongsTo(\App\Models\User::class, 'user_id');
+}
+public function transaction()
+{
+    return $this->hasOne(Transaction::class);
+}
 }

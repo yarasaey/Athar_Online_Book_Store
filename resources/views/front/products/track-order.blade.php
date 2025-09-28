@@ -17,9 +17,27 @@
       </div>
 
       <section class="section-container my-5 py-5">
-        <p>
+        {{-- <p>
           تم تقديم الطلب #79917 في يوليو 26, 2023 وهو الآن بحالة قيد التنفيذ.
-        </p>
+        </p> --}}
+
+        <p>
+  تم تقديم الطلب رقم #{{ $order->id }} بتاريخ 
+  {{ $order->created_at->format('d-m-Y') }}، 
+  وحالته الحالية هي:
+ @php
+    $badgeClass = match($order->status) {
+        'ordered' => 'bg-warning',
+        'delivered' => 'bg-success',
+        'canceled' => 'bg-danger',
+       
+    };
+@endphp
+
+<span class="badge {{ $badgeClass }}">
+    {{ __('statuses.' . $order->status) }}
+</span>
+</p>
 
         <section>
           <h2>تفاصيل الطلب</h2>

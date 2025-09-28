@@ -72,35 +72,52 @@
       <div class="contact__side w-50">
         <h4 class="mb-3">يسعدنا تواصلك معنا في أى وقت</h4>
         <p>إذا كنت تواجه أي مشكلة أو ترغب في إسترجاع أو إستبدال المنتج لا تتردد أبدأ بالتواصل معنا في أي وقت. كل ماعليك هو ملئ النموذج التالي ببيانات صحيحة وسنقوم بمراجعة طلبك في أسرع وقت.</p>
-        <form class="contact__form" action="">
+        <form class="contact__form" action="{{ route('contact.store') }}" method="POST">
+          @csrf
           <div class="d-flex gap-3 mb-3">
             <div class="w-50">
               <label for="name">الاسم<span class="required">*</span></label>
-              <input class="contact__input" id="name" type="text">
+              <input class="contact__input" id="name" type="text"   value="{{ old('name') }}" name="name">
+              @error('name')
+             <div class="text-danger small mt-1">{{ $message }}</div>
+             @enderror
             </div>
             <div class="w-50">
               <label for="phone">رقم الهاتف<span class="required">*</span></label>
-              <input class="contact__input" id="phone" type="text">
+              <input class="contact__input" id="phone" name="phone" type="text" value="{{ old('phone') }}">
+              @error('phone')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+            @enderror
             </div>
           </div>
           <div class="mb-3">
             <label for="email">البريد الالكتروني<span class="required">*</span></label>
-            <input class="contact__input" id="email" type="text">
+            <input class="contact__input" id="email" name="email" type="email" value="{{ old('email') }}">
+            @error('email')
+            <div class="text-danger small mt-1">{{ $message }}</div>
+          @enderror
           </div>
           <div class="mb-3">
-            <label for="reason">سبب التواصل<span class="required">*</span></label>
-            <select class="contact__input" id="reason">
-              <option value="">- اضغط هنا لاختيرا السبب -</option>
-              <option value="">استفسار</option>
-              <option value="">استبدال</option>
-              <option value="">استرجاع</option>
-              <option value="">استعجال اوردر</option>
-              <option value="">اخري</option>
-            </select>
-          </div>
+    <label for="reason">سبب التواصل<span class="required">*</span></label>
+    <select class="contact__input" id="reason" name="reason">
+        <option value="">- اضغط هنا لاختيار السبب -</option>
+        <option value="استفسار" {{ old('reason') == 'استفسار' ? 'selected' : '' }}>استفسار</option>
+        <option value="استبدال" {{ old('reason') == 'استبدال' ? 'selected' : '' }}>استبدال</option>
+        <option value="استرجاع" {{ old('reason') == 'استرجاع' ? 'selected' : '' }}>استرجاع</option>
+        <option value="استعجال اوردر" {{ old('reason') == 'استعجال اوردر' ? 'selected' : '' }}>استعجال اوردر</option>
+        <option value="اخري" {{ old('reason') == 'اخري' ? 'selected' : '' }}>أخرى</option>
+    </select>
+    @error('reason')
+        <div class="text-danger small mt-1">{{ $message }}</div>
+    @enderror
+</div>
+
           <div>
             <label for="reason">نص الرسالة<span class="required">*</span></label>
-            <textarea class="contact__input" name="" id=""></textarea>
+            <textarea class="contact__input" id="message" name="message">{{ old('message') }}</textarea>
+            @error('message')
+          <div class="text-danger small mt-1">{{ $message }}</div>
+           @enderror
           </div>
           <button class="primary-button w-100 rounded-2">ارسال الطلب</button>
         </form>
@@ -135,3 +152,13 @@
         }
     }
   </script>
+   <script>
+        setTimeout(function () {
+            const el = document.getElementById('success');
+            if (el) {
+                el.style.transition = 'opacity 0.5s ease';
+                el.style.opacity = '0';
+                setTimeout(() => el.remove(), 500); // إزالة العنصر تمامًا بعد التلاشي
+            }
+        }, 3000); // 3 ثواني
+    </script>
