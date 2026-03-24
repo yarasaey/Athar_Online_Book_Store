@@ -57,6 +57,12 @@ At the same time, it gives administrators full control over managing the store.
 | Database     | MySQL |
 | Architecture | MVC Pattern |
 
+
+Screenshot
+<img width="1920" height="800" alt="athar6" src="https://github.com/user-attachments/assets/da025454-e908-477c-9769-702f2ed0f13e" />
+
+
+
  ⚙️ Installation  
 
  1. Clone the Repository  
