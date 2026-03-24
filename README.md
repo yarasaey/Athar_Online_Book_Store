@@ -59,9 +59,11 @@ At the same time, it gives administrators full control over managing the store.
 
 
 Screenshot
-<img width="1920" height="844" alt="Athar" src="https://github.com/user-attachments/assets/84028467-ff65-4f26-aee1-3be0a698665d" />
-<img width="1920" height="827" alt="athar2" src="https://github.com/user-attachments/assets/98e3e793-1435-4f8a-950b-fc3f72ec3ddc" />
-<img width="1920" height="831" alt="athar3" src="https://github.com/user-attachments/assets/724c30b9-64d6-4bab-b843-088342fca749" />
+<img width="968" height="699" alt="athar37" src="https://github.com/user-attachments/assets/fbfea70f-a899-4ffa-8db1-52dcf84da1d0" />
+
+<img width="979" height="814" alt="athar38" src="https://github.com/user-attachments/assets/0a34499d-3bd0-4684-a6aa-feea488186b8" />
+
+<img width="1021" height="543" alt="athar39" src="https://github.com/user-attachments/assets/a96b03b9-b09b-457c-9d72-6c2efba72701" />
 
 
 
