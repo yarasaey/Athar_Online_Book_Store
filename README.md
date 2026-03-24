@@ -63,9 +63,8 @@ Screenshot
 <img width="1920" height="827" alt="athar2" src="https://github.com/user-attachments/assets/98e3e793-1435-4f8a-950b-fc3f72ec3ddc" />
 <img width="1920" height="831" alt="athar3" src="https://github.com/user-attachments/assets/724c30b9-64d6-4bab-b843-088342fca749" />
 <img width="1920" height="1080" alt="athar7" src="https://github.com/user-attachments/assets/55e79e95-b4da-4ce3-b573-e87328099d4e" />
-<img width="1920" height="800" alt="athar6" src="https://github.com/user-attachments/assets/10daa951-8377-4741-b04d-e6249c7e2a21" />
-<img width="1920" height="815" alt="athar 10" src="https://github.com/user-attachments/assets/f4db4342-1989-4675-907b-041cc2743717" />
 <img width="1920" height="763" alt="athar8" src="https://github.com/user-attachments/assets/e5feeaf7-94b7-4a85-96da-c525183e2c9c" />
+
 
 
  ⚙️ Installation  
