@@ -10,9 +10,12 @@ use App\Http\Controllers\admin\AuthorsController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\DiscountCodeController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileUserController;
+use App\Http\Controllers\LocalController;
 use App\Http\Controllers\WebsiteProductController;
 
 
@@ -21,9 +24,7 @@ use App\Http\Controllers\WebsiteProductController;
 
 
 
-// //Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', [FrontController ::class, 'index'])->name('front.home');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
@@ -40,6 +41,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/products', [ProductController::class, 'website'])->name('products.website');
     
 });
+//Route::get('/profile-user',[ProfileUserController::class,'index'])->name('user-profile');
+ Route::middleware(['web'])->group(function(){
+    Route::get('/profile-user',[ProfileUserController::class,'index'])->name('user-profile');
+});
+
+
 //website products
 Route::get('/products', [ShopController::class, 'showProducts'])->name('products.website');
 Route::get('/product/{id}', [ShopController::class, 'show'])->name('product.show');
@@ -53,9 +60,15 @@ Route::get('/category/{id}/products', [ShopController::class, 'productsByCategor
  Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
  Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
  //order confirmation 
+ 
  Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');
  Route::get('/order{id}', [CartController::class, 'orderRecieved'])->name('checkout.success');
  Route::get('/track-order', [CartController::class, 'trackOrder'])->name('order.track');
+ Route::get('/lang-change/{lang}',[LocalController::class,'change'])->name('lang.change');
+ Route::get('/test-email', function () {
+    $order = \App\Models\Order::first(); // or fake order
+    return view('emails.order_confirmation', compact('order'));
+});
 
 
 
@@ -72,11 +85,12 @@ Route::get('/category/{id}/products', [ShopController::class, 'productsByCategor
 
 //middleware protected routes
 Route::group(['prefix'=>'admin'],function(){
+//Route::prefix('admin')->middleware('admin.auth')->group(function () {
     Route::group(['middleware'=>'admin.guest'],function(){
         Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
         Route::post('/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
     }); 
-    Route::group(['middleware'=>'admin.auth'],function(){
+    Route::group(['middleware'=>['admin.auth', 'nocache']],function(){
         Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
 //catogry routes
@@ -120,6 +134,12 @@ Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('prod
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders{id}', [OrderController::class, 'detail'])->name('orders.detail');
 Route::put('/orders/update-status',[OrderController::class,'update'])->name('orders.status');
+
+//admin setting
+Route::get('/change-password',[SettingController::class,'showChangePasswordForm'])->name('admin.password.show');
+Route::post('/change',[SettingController::class,'changePassword'])->name('admin.password.change');
+
+//Route::put('/')
 
 
 

@@ -7,11 +7,18 @@
     "require": {
         "php": "^8.0.2",
         "doctrine/dbal": "^3.9",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.9",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "php-http/guzzle7-adapter": "^1.1",
+        "railsware/mailtrap-php": "^3.9",
+        "spatie/laravel-permission": "^6.24",
+        "stripe/stripe-php": "*",
+        "symfony/http-client": "^6.2",
+        "symfony/mailer": "^6.1",
+        "symfony/postmark-mailer": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -62,7 +69,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",

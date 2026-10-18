@@ -25,7 +25,6 @@
       </div>
     </section>
     <!-- Hero Section End -->
-
     <!-- Offer Section Start -->
     <section class="section-container mb-5 mt-3">
       <div class="offer d-flex align-items-center justify-content-between rounded-3 p-3 text-white">
@@ -49,8 +48,6 @@
       </div>
     </section>
     <!-- Offer Section End -->
-   
-
     <!-- Products Section Start -->
 @if($products->isNotEmpty())
  <section class="section-container mb-5">
@@ -98,8 +95,6 @@
    </div>
  </section>
 @endif
-
-
     <!-- Categories Section Start -->
     <section class="section-container mb-5">
       <div class="categories row gx-4">
@@ -117,15 +112,15 @@
       </div>
     </section>
     <!-- Best Sales Section Start -->
-    @if($products->isNotEmpty())
+    @if($trends->isNotEmpty())
     <section class="section-container mb-5">
       <div class="products__header mb-4 d-flex align-items-center justify-content-between">
-        <h4 class="m-0">وصل حديثا</h4>
+        <h4 class="m-0">الاكثر شهرة</h4>
         <button   onclick="window.location.href='{{ route('products.website') }}'"  class="products__btn py-2 px-3 rounded-1">تسوق الان</button>
       </div>
       
       <div class="owl-carousel products__slider owl-theme">
-        @foreach ($products as $product)
+        @foreach ($trends as $product)
         <div class="products__item">
           <div class="product__header mb-3">
             <a href="{{ route('product.show', $product->id) }}"> <!-- رابط لصفحة المنتج -->
@@ -164,9 +159,8 @@
     </section>
 @endif
     <!-- Best Sales Section End -->
-
     <!-- Newest Section Start -->
-    @if($products->isNotEmpty())
+    @if($results->isNotEmpty())
     <section class="section-container mb-5">
       <div class="products__header mb-4 d-flex align-items-center justify-content-between">
         <h4 class="m-0">الاكثر مبيعا</h4>
@@ -174,7 +168,7 @@
       </div>
       
       <div class="owl-carousel products__slider owl-theme">
-        @foreach ($products as $product)
+        @foreach ($results as $product)
         <div class="products__item">
           <div class="product__header mb-3">
             <a href="{{ route('product.show', $product->id) }}"> <!-- رابط لصفحة المنتج -->
