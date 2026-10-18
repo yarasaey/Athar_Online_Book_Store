@@ -8,6 +8,9 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmationMail;
+
 
 
 class CartController extends Controller
@@ -156,6 +159,10 @@ public function processCheckout(Request $request)
     }
 
     session()->forget('cart');
+//  if ($user) {
+//    Mail::to($user->email)
+//         ->send(new OrderConfirmationMail($order));
+//  }
 
 
 return redirect()->route('checkout.success', ['id' => $order->id])->with('success', 'تم تأكيد الطلب بنجاح!');

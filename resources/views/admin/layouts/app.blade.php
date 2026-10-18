@@ -15,6 +15,13 @@
 		<link rel="stylesheet" href="{{ asset('admin-assets/plugins/summernote/summernote-bs4.min.css') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="store-url" content="{{ route('categories.store') }}">
+		<script>
+window.addEventListener("pageshow", function(event) {
+    if (event.persisted || (window.performance && window.performance.getEntriesByType("navigation")[0].type === "back_forward")) {
+        window.location.href = "{{ route('admin.login') }}";
+    }
+});
+</script>
 	</head>
 	<body class="hold-transition sidebar-mini">
 		<!-- Site wrapper -->
@@ -47,17 +54,22 @@
 							<h4 class="h4 mb-0"><strong>{{ Auth::guard('admin')->user()->name }}</strong></h4>
 							<div class="mb-3">{{ Auth::guard('admin')->user()->email }}</div>
 							<div class="dropdown-divider"></div>
-							<a href="#" class="dropdown-item">
-								<i class="fas fa-user-cog mr-2"></i> Settings								
+							<a href="" class="dropdown-item" >
+								<i class="fas fa-user-cog mr-2" ></i> Settings								
 							</a>
 							<div class="dropdown-divider"></div>
-							<a href="#" class="dropdown-item">
+							<a href="{{ route('admin.password.show') }}" class="dropdown-item">
 								<i class="fas fa-lock mr-2"></i> Change Password
 							</a>
 							<div class="dropdown-divider"></div>
 							<a href="{{ route('admin.logout') }}" class="dropdown-item text-danger">
 								<i class="fas fa-sign-out-alt mr-2"></i> Logout							
 							</a>							
+							{{-- <form method="POST" action="{{ route('admin.logout') }}">
+                             @csrf
+                          <button type="submit">Logout</button>
+                          </form> --}}
+				
 						</div>
 					</li>
 				</ul>

@@ -38,12 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'website_users',
         ],
-        'admin' => [
+         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
-        ],
+          'provider' => 'users',
+         ],
+        
+        //  'admin' => [
+        //    'driver' => 'session',
+        //     'provider' => 'admins',
+        //  ],
         
     'website_user' => [ // optional new guard
         'driver' => 'session',
@@ -69,14 +74,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ], 'website_users' => [ // New provider for website users
+          'users' => [
+             'driver' => 'eloquent',
+              'model' => App\Models\User::class,
+          ],
+            // 'admins' => [
+            // 'driver' => 'eloquent',
+            //  'model' => App\Models\User::class,
+            //   ],
+      'website_users' => [ // New provider for website users
             'driver' => 'eloquent',
             'model' => App\Models\WebsiteUser::class, // Create a new model for website users
         ],

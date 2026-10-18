@@ -111,7 +111,6 @@
         <div class="text-danger small mt-1">{{ $message }}</div>
     @enderror
 </div>
-
           <div>
             <label for="reason">نص الرسالة<span class="required">*</span></label>
             <textarea class="contact__input" id="message" name="message">{{ old('message') }}</textarea>
@@ -133,7 +132,7 @@
   </main>
 @endsection
 <script>
-    // تحقق من أن الرسالة موجودة في الصفحة
+
     window.onload = function() {
         var successMessage = document.getElementById('success');
         
@@ -158,7 +157,7 @@
             if (el) {
                 el.style.transition = 'opacity 0.5s ease';
                 el.style.opacity = '0';
-                setTimeout(() => el.remove(), 500); // إزالة العنصر تمامًا بعد التلاشي
+                setTimeout(() => el.remove(), 500); 
             }
         }, 3000); // 3 ثواني
     </script>

@@ -49,6 +49,7 @@
     </section>
 </div>
 @endsection
+
 @section('customer')
 <script>
     $(document).ready(function() {
