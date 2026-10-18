@@ -14,7 +14,7 @@ class WebsiteUser extends Authenticatable
 
     protected $fillable = [
         'name', 'email', 'password',
-    ];
+    ];//website user
 
     protected $hidden = [
         'password', 'remember_token',
